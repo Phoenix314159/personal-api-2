@@ -1,44 +1,60 @@
 angular.module('myApp').service('mainService', function ($http) {
-   this.getName = function () {
+   let serverUrl = 'http://localhost:3020';
+
+    this.getName = function () {
        return $http({
            method: 'GET',
-           url: 'http://localhost:3020/name'
+           url: serverUrl + '/name'
        })
    }
    this.getLocation = function () {
        return $http({
            method: 'GET',
-           url: 'http://localhost:3020/location'
+           url: serverUrl + '/location'
        })
    }
    this.getOccupations = function () {
        return $http({
            method: 'GET',
-           url: 'http://localhost:3020/occupations'
+           url: serverUrl + '/occupations'
        })
    }
     this.getLatestOcc = function () {
         return $http({
             method: 'GET',
-            url: 'http://localhost:3020/occupations/latest'
+            url: serverUrl + '/occupations/latest'
         })
     }
     this.getHobbies = function () {
         return $http({
             method: 'GET',
-            url: 'http://localhost:3020/hobbies'
+            url: serverUrl + '/hobbies'
         })
     }
     this.getHobbiesByType = function (type) {
         return $http({
             method: 'GET',
-            url: 'http://localhost:3020/hobbies/' + type
+            url: serverUrl + '/hobbies/' + type
         })
     }
     this.getFamilyByGender = function (gender) {
         return $http({
             method: 'GET',
-            url: 'http://localhost:3020/family/' + gender
+            url: serverUrl + '/family/' + gender
         })
     }
+     this.addFamilyMember = function(name,relation,gender){
+        return $http({
+            method: 'POST',
+            data: {name: name, relation: relation, gender: gender},
+            url: serverUrl + '/addfamilymember'
+        })
+     }
+     this.deleteHobbieByType = function (id) {
+         return $http({
+             method: 'DELETE',
+             data: {id:id},
+             url: serverUrl + '/hobbies/' + id
+         })
+     }
 })

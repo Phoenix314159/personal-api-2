@@ -21,6 +21,12 @@ angular.module("myApp").controller('mainController',function ($scope, mainServic
 
     mainService.getFamilyByGender().then(response => {
         $scope.gender = response.data;
+    });
+    mainService.addFamilyMember().then(response => {
+        $scope.newFamilyMember = response.data;
+    })
+    mainService.deleteHobbieByType().then(response => {
+        console.log(response);
     })
 
 

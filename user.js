@@ -54,6 +54,7 @@ let user = {
 ;
 module.exports = {
     getName : function (req, res) {
+
         res.json(user.name);
     },
     getLocation: function (req,res) {
@@ -108,4 +109,23 @@ module.exports = {
         }
 
     },
+    addFamilyMember: function (req,res) {
+           res.json(user.family.push(req.body))
+    },
+    deleteHobbie: function (req,res) {
+        for(var i=0; i<user.hobbies.length; i++) {
+            if (req.params.id === user.hobbies[i].type) {
+                user.hobbies.splice(i, 1);
+            }
+        }
+        res.json(user.hobbies);
+    },
+    deleteOcc : function (req, res) {
+        if (req.params.id) {
+            res.json(user.occupations.pop());
+
+        }else{
+            res.json(user.occupations)
+        }
+    }
 }
