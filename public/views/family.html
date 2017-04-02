@@ -1,4 +1,12 @@
-<div ng-repeat="x in gender">
+<div ng-repeat="x in family">
     {{x.name}}
-
+    {{x.relation}}
+    {{x.gender}}
 </div>
+
+<h1>Add a family member</h1>
+<input ng-model="name" placeholder="enter name1" type="text">
+<input ng-model="relation" placeholder="enter releation1" type="text">
+<input ng-model="gender" placeholder="enter gender1" type="text">
+
+<button ng-click="addFamilyMember()">Add</button>

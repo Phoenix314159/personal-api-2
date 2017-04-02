@@ -127,5 +127,8 @@ module.exports = {
         }else{
             res.json(user.occupations)
         }
+    },
+    addNewHobby : function (req,res) {
+        res.json(user.hobbies.push(req.body));
     }
 }
